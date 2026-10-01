@@ -1,0 +1,22 @@
+<div class="region-page">
+  <div class="region-page__inner">
+
+    <h1 class="region-page__title">{{ 'region_page_title' | translate }}</h1>
+
+    @for (region of regions; track region.name) {
+      <div class="region-page__section">
+        <h2 class="region-page__region-title">{{ region.name }}</h2>
+        <ul class="region-page__list">
+          @for (country of region.countries; track country.label) {
+            <li>
+              <button class="region-page__link" (click)="selectCountry(country.lang, country.code)">
+                {{ country.label }}
+              </button>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+
+  </div>
+</div>

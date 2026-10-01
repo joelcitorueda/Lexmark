@@ -1,0 +1,63 @@
+<div class="prov-page">
+  <div class="prov-page__inner">
+
+    @if (!activePdf()) {
+      <!-- Country list view -->
+      <div class="prov-page__header">
+        <h1 class="prov-page__title">Proveedores Autorizados Lexmark</h1>
+        <p class="prov-page__subtitle">Selecciona tu país para ver la lista de proveedores autorizados en tu región.</p>
+      </div>
+
+      <div class="prov-page__section">
+        <h2 class="prov-page__region-title">América Latina</h2>
+        <ul class="prov-page__list">
+          @for (country of countries; track country.code) {
+            <li>
+              @if (hasPdf(country.code)) {
+                <button class="prov-page__country prov-page__country--active"
+                        (click)="selectCountry(country.code, country.name)">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#cc0000" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                  </svg>
+                  {{ country.name }}
+                </button>
+              } @else {
+                <span class="prov-page__country prov-page__country--soon">
+                  {{ country.name }}
+                  <em>próximamente</em>
+                </span>
+              }
+            </li>
+          }
+        </ul>
+      </div>
+
+    } @else {
+      <!-- PDF viewer -->
+      <div class="prov-page__viewer-bar">
+        <button class="prov-page__back-btn" (click)="closePdf()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M5 12l7 7M5 12l7-7"/>
+          </svg>
+          Volver a países
+        </button>
+        <h2 class="prov-page__viewer-title">
+          Proveedores Autorizados — {{ activeCountry() }}
+        </h2>
+        <a [href]="activePdfRaw()!" download class="prov-page__download-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Descargar PDF
+        </a>
+      </div>
+      <div class="prov-page__pdf-wrap">
+        <iframe [src]="activePdf()!" class="prov-page__pdf-frame" title="Proveedores autorizados"></iframe>
+      </div>
+    }
+
+  </div>
+</div>

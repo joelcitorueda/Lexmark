@@ -1,0 +1,36 @@
+<section class="hero">
+  <!-- Full-width background image -->
+  <div class="hero__bg"></div>
+
+  <!-- Centered frosted glass panel -->
+  <div class="hero__panel-wrap">
+    <div class="hero__panel">
+      <p class="hero__eyebrow">{{ 'hero_eyebrow' | translate }}</p>
+      <h1 class="hero__title">{{ 'hero_title' | translate }}</h1>
+      <p class="hero__subtitle">{{ 'hero_subtitle' | translate }}</p>
+
+      <div class="hero__actions">
+        <a href="https://www.lexmark.com/es_xl/about-us/company-overview.html" target="_blank" class="hero__btn">
+          {{ 'hero_btn' | translate }}
+        </a>
+      </div>
+
+      <div class="hero__links">
+        <a href="https://www.xerox.com" target="_blank" class="hero__text-link">
+          {{ 'hero_link1' | translate }}
+        </a>
+        <a routerLink="/mantenimiento" class="hero__text-link">
+          {{ 'hero_link2' | translate }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Value Strip -->
+<section class="value-strip">
+  <div class="container value-strip__inner">
+    <h2 class="value-strip__title">{{ 'value_title' | translate }}</h2>
+    <p class="value-strip__text">{{ 'value_text' | translate }}</p>
+  </div>
+</section>

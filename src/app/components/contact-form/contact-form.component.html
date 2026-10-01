@@ -1,0 +1,114 @@
+<div class="contact-form">
+
+  <!-- Success State -->
+  @if (submitted()) {
+    <div class="contact-form__success">
+      <div class="contact-form__success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="m8 12 2.5 2.5L16 9" />
+        </svg>
+      </div>
+      <h3>¡Requerimiento enviado!</h3>
+      <p>Enviamos tu solicitud a</p>
+      <p class="contact-form__success-email"><strong>{{ getDestinationEmail() }}</strong></p>
+      <p>Nos pondremos en contacto contigo en menos de 24 horas.</p>
+      <button class="btn btn-primary" (click)="resetForm()">Enviar otro requerimiento</button>
+    </div>
+  }
+
+  <!-- Form -->
+  @if (!submitted()) {
+    <div class="contact-form__intro">
+      <h3>Cuéntanos qué necesitas</h3>
+      <p>Completa el formulario y te responderemos en menos de 24 horas hábiles.</p>
+    </div>
+    <form class="contact-form__form" (ngSubmit)="onSubmit()" #contactFormEl="ngForm">
+      <div class="contact-form__row">
+        <div class="contact-form__field">
+          <label for="nombre">Nombre completo *</label>
+          <input id="nombre" type="text" [(ngModel)]="form.nombre" name="nombre"
+                 placeholder="Tu nombre" required>
+        </div>
+        <div class="contact-form__field">
+          <label for="empresa">Empresa</label>
+          <input id="empresa" type="text" [(ngModel)]="form.empresa" name="empresa"
+                 placeholder="Nombre de tu empresa">
+        </div>
+      </div>
+
+      <div class="contact-form__row">
+        <div class="contact-form__field">
+          <label for="email">Correo electrónico *</label>
+          <input id="email" type="email" [(ngModel)]="form.email" name="email"
+                 placeholder="correo@empresa.com" required>
+        </div>
+        <div class="contact-form__field">
+          <label for="telefono">Teléfono</label>
+          <input id="telefono" type="tel" [(ngModel)]="form.telefono" name="telefono"
+                 placeholder="+1 (305) 000-0000">
+        </div>
+      </div>
+
+      <div class="contact-form__field">
+        <label for="tipo">Tipo de requerimiento *</label>
+        <select id="tipo" [(ngModel)]="form.tipo" name="tipo" required>
+          <option value="" disabled>Selecciona el tipo de solicitud</option>
+          @for (tipo of tiposRequerimiento; track tipo) {
+            <option [value]="tipo">{{ tipo }}</option>
+          }
+        </select>
+        @if (form.tipo) {
+          <div class="contact-form__destination">
+            <span class="contact-form__destination-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m3 7 9 6 9-6" />
+              </svg>
+            </span>
+            Tu solicitud irá a: <strong>{{ getDestinationEmail() }}</strong>
+          </div>
+        }
+      </div>
+
+      <div class="contact-form__field">
+        <label for="mensaje">Mensaje o descripción del requerimiento</label>
+        <textarea id="mensaje" [(ngModel)]="form.mensaje" name="mensaje" rows="5"
+                  placeholder="Describe lo que necesitas: modelo de impresora, cantidad, ubicación de entrega, etc.">
+        </textarea>
+      </div>
+
+      @if (submitError()) {
+        <div class="contact-form__error" role="alert">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 7v6M12 17h.01" />
+          </svg>
+          {{ submitError() }}
+        </div>
+      }
+
+      <div class="contact-form__footer">
+        <p class="contact-form__privacy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <rect x="5" y="10" width="14" height="10" rx="2" />
+            <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+          </svg>
+          Tu información es confidencial y solo será usada para atender tu solicitud.
+        </p>
+        <button type="submit" class="btn btn-primary contact-form__submit"
+                [disabled]="isLoading() || !form.nombre || !form.email || !form.tipo">
+          @if (isLoading()) {
+            <span class="contact-form__spinner"></span> Enviando...
+          } @else {
+            <svg class="contact-form__send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="m22 2-7 20-4-9-9-4Z" />
+              <path d="M22 2 11 13" />
+            </svg>
+            Enviar Requerimiento
+          }
+        </button>
+      </div>
+    </form>
+  }
+</div>

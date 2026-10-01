@@ -1,0 +1,23 @@
+<section class="home-categories">
+  <div class="container home-categories__inner">
+    <div class="home-categories__grid">
+      @for (cat of categories; track cat.titleKey) {
+        <div class="home-category-card">
+          <div class="home-category-card__img-wrap">
+            <img [src]="cat.image" [alt]="cat.titleKey | translate" class="home-category-card__img" width="500" height="370" loading="lazy" decoding="async">
+          </div>
+          <div class="home-category-card__content">
+            <h3 class="home-category-card__title">{{ cat.titleKey | translate }}</h3>
+            <p class="home-category-card__desc">{{ cat.descKey | translate }}</p>
+            <a [href]="cat.buttonLink" target="_blank" class="home-category-card__btn">
+              {{ cat.btnKey | translate }}
+            </a>
+            <a [href]="cat.footerLinkUrl" target="_blank" class="home-category-card__link">
+              {{ cat.linkKey | translate }}
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

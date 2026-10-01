@@ -1,0 +1,151 @@
+.footer {
+  padding: 64px 24px 56px;
+  background: #fff;
+  color: #24364a;
+
+  &__container {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 32px;
+    margin-bottom: 18px;
+  }
+
+  &__social-link {
+    display: grid;
+    place-items: center;
+    color: #080b0e;
+
+    svg {
+      display: block;
+      width: 32px;
+      height: 32px;
+    }
+
+    &--youtube svg { width: 34px; height: 26px; }
+    &--x svg { width: 26px; height: 26px; }
+    &--facebook svg { width: 27px; height: 27px; }
+  }
+
+  a {
+    &:hover,
+    &:focus-visible { color: var(--color-primary); }
+  }
+
+  &__columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 28px;
+  }
+
+  &__column {
+    h2 {
+      margin-bottom: 14px;
+      color: #0d1115;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.2;
+
+      a {
+        color: inherit;
+        font: inherit;
+        text-decoration: underline;
+        text-decoration-thickness: 1.5px;
+        text-underline-offset: 3px;
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    a {
+      color: #23364b;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    margin-top: 32px;
+  }
+
+  &__company {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 22px;
+    color: #4a5a6c;
+
+    p {
+      color: inherit;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+  }
+
+  &__logo {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    object-fit: contain;
+  }
+
+  &__divider {
+    width: 1px;
+    height: 40px;
+    background: #d5dce3;
+  }
+
+  &__legal {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 6px;
+    color: #5d6a78;
+    font-size: 16px;
+    line-height: 1.4;
+    text-align: right;
+
+    a {
+      color: #142335;
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .footer {
+    padding: 52px 24px 44px;
+
+    &__bottom { align-items: flex-start; flex-direction: column; }
+    &__legal { justify-content: flex-start; text-align: left; }
+  }
+}
+
+@media (max-width: 800px) {
+  .footer {
+    padding: 44px 20px 40px;
+
+    &__columns { grid-template-columns: 1fr; row-gap: 30px; }
+    &__social { gap: 18px; }
+    &__company p { font-size: 13px; }
+  }
+}

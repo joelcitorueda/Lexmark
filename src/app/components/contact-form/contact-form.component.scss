@@ -1,0 +1,185 @@
+.contact-form {
+  &__intro {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-gray-200);
+
+    h3 {
+      margin-bottom: 6px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-dark);
+    }
+
+    p {
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    @media (max-width: 600px) { grid-template-columns: 1fr; }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-gray-900);
+    }
+
+    input, select, textarea {
+      padding: 12px 16px;
+      border: 2px solid var(--color-gray-200);
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--color-gray-900);
+      background: white;
+      transition: all 0.2s;
+      outline: none;
+
+      &:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 4px rgba(204,0,0,0.08);
+      }
+
+      &::placeholder { color: var(--color-gray-400); }
+    }
+
+    select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%23999' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+    }
+
+    textarea { resize: vertical; min-height: 120px; }
+  }
+
+  &__destination {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--color-gray-700);
+    background: rgba(204,0,0,0.06);
+    border: 1px solid rgba(204,0,0,0.15);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    animation: fadeIn 0.3s ease;
+
+    strong { color: var(--color-primary); }
+  }
+
+  &__destination-icon {
+    display: inline-flex;
+    color: var(--color-primary);
+
+    svg { width: 16px; height: 16px; }
+  }
+
+  &__error {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    color: #a30000;
+    background: #fff3f3;
+    border: 1px solid rgba(204, 0, 0, 0.25);
+    font-size: 0.82rem;
+    line-height: 1.45;
+
+    svg { width: 18px; height: 18px; flex-shrink: 0; }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 8px;
+  }
+
+  &__privacy {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--color-gray-400);
+
+    svg { width: 15px; height: 15px; flex-shrink: 0; }
+  }
+
+  &__send-icon { width: 15px; height: 15px; }
+
+  &__submit {
+    min-width: 220px;
+    justify-content: center;
+
+    &:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+  }
+
+  &__spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+  }
+
+  // ── Success ──────────────────────────────
+  &__success {
+    text-align: center;
+    padding: 48px 24px;
+    animation: fadeInUp 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    h3 { font-size: 1.5rem; color: var(--color-dark); }
+    p  { color: var(--color-gray-700); max-width: 420px; }
+
+    .contact-form__success-email strong { color: var(--color-primary); }
+  }
+
+  &__success-icon {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    color: #1a9a4b;
+    background: #eaf7ee;
+    border-radius: 50%;
+    animation: pulse-red 2s infinite;
+
+    svg { width: 30px; height: 30px; }
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

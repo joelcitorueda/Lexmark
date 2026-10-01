@@ -1,0 +1,80 @@
+<section class="services section-pad" id="servicios">
+  <div class="container">
+    <div class="services__header">
+      <h2 class="services__title">Todo lo que tu empresa <span class="text-primary">necesita</span></h2>
+      <p class="services__subtitle">
+        Desde la venta de equipos hasta contratos de impresión gestionada, somos tu socio en Miami y Latinoamérica.
+      </p>
+    </div>
+
+    <div class="services__grid">
+      @for (svc of services; track svc.title) {
+        <a [routerLink]="svc.link" class="services__card">
+          <div class="services__icon-box">
+            <!-- Dynamic SVG icon per service -->
+            <svg class="services__icon-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              @if (svc.iconName === 'printer') {
+                <rect x="8" y="14" width="32" height="20" rx="3" stroke="#CC0000" stroke-width="2.5"/>
+                <rect x="12" y="6" width="24" height="10" rx="2" stroke="#CC0000" stroke-width="2.5"/>
+                <rect x="12" y="26" width="24" height="16" rx="2" stroke="#CC0000" stroke-width="2.5"/>
+                <circle cx="34" cy="22" r="2" fill="#CC0000"/>
+              }
+              @if (svc.iconName === 'refresh') {
+                <path d="M12 24a12 12 0 0 1 12-12c3.8 0 7.2 1.8 9.4 4.6" stroke="#CC0000" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M36 24a12 12 0 0 1-12 12c-3.8 0-7.2-1.8-9.4-4.6" stroke="#CC0000" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M33 12l3 4.6L40 14" stroke="#CC0000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15 36l-4-4.6L7 34" stroke="#CC0000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              }
+              @if (svc.iconName === 'gear') {
+                <circle cx="24" cy="24" r="6" stroke="#CC0000" stroke-width="2.5"/>
+                <path d="M24 8v4M24 36v4M8 24h4M36 24h4M12.7 12.7l2.8 2.8M32.5 32.5l2.8 2.8M35.3 12.7l-2.8 2.8M15.5 32.5l-2.8 2.8" stroke="#CC0000" stroke-width="2.5" stroke-linecap="round"/>
+              }
+              @if (svc.iconName === 'wrench') {
+                <path d="M36 12l-4 4-8-8 4-4a6 6 0 0 1 8 8z" stroke="#CC0000" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                <path d="M32 16L14 34" stroke="#CC0000" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="10" cy="38" r="4" stroke="#CC0000" stroke-width="2.5"/>
+              }
+              @if (svc.iconName === 'box') {
+                <path d="M24 6L38 14v20L24 42 10 34V14L24 6z" stroke="#CC0000" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M24 6v36M10 14l14 8 14-8" stroke="#CC0000" stroke-width="2.5" stroke-linejoin="round"/>
+              }
+              @if (svc.iconName === 'globe') {
+                <circle cx="24" cy="24" r="16" stroke="#CC0000" stroke-width="2.5"/>
+                <path d="M8 24h32M24 8c-4 4-6 10-6 16s2 12 6 16M24 8c4 4 6 10 6 16s-2 12-6 16" stroke="#CC0000" stroke-width="2" stroke-linecap="round"/>
+              }
+              @if (svc.iconName === 'badge') {
+                <rect x="10" y="6" width="28" height="36" rx="3" stroke="#CC0000" stroke-width="2.5"/>
+                <circle cx="24" cy="19" r="5" stroke="#CC0000" stroke-width="2.5"/>
+                <path d="M16 30h16M16 35h10" stroke="#CC0000" stroke-width="2.5" stroke-linecap="round"/>
+              }
+            </svg>
+          </div>
+          <h3 class="services__card-title">{{ svc.title }}</h3>
+          <p class="services__card-desc">{{ svc.description }}</p>
+          <span class="services__card-link">
+            Más información
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="#CC0000" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </a>
+      }
+    </div>
+
+    <!-- CTA Banner -->
+    <div class="services__banner">
+      <div class="services__banner-text">
+        <h3>¿Necesitas una solución personalizada?</h3>
+        <p>Habla con nuestros especialistas y diseñamos el plan ideal para tu negocio.</p>
+      </div>
+      <div class="services__banner-btns">
+        <a href="mailto:ventaspartner@lexmark.miami" class="services__banner-btn services__banner-btn--white">
+          ventaspartner&#64;lexmark.miami
+        </a>
+        <a routerLink="/contacto" class="services__banner-btn services__banner-btn--outline">
+          Contactar ahora
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
