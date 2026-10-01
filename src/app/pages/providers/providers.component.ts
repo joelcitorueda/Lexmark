@@ -38,8 +38,8 @@ export class ProvidersComponent {
 
   selectCountry(code: string, name: string) {
     if (this.hasPdf(code)) {
-      this._activePdfUrl.set(`/pdfs-prov/${this.pdfs[code]}`);
-      this.activeCountry.set(name);
+      const url = `/pdfs-prov/${this.pdfs[code]}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
     }
   }
 

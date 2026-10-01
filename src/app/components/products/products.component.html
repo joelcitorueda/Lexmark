@@ -9,10 +9,10 @@
           <div class="home-category-card__content">
             <h3 class="home-category-card__title">{{ cat.titleKey | translate }}</h3>
             <p class="home-category-card__desc">{{ cat.descKey | translate }}</p>
-            <a [href]="cat.buttonLink" target="_blank" class="home-category-card__btn">
+            <a [routerLink]="cat.buttonLink" class="home-category-card__btn">
               {{ cat.btnKey | translate }}
             </a>
-            <a [href]="cat.footerLinkUrl" target="_blank" class="home-category-card__link">
+            <a [routerLink]="cat.footerLinkUrl" class="home-category-card__link">
               {{ cat.linkKey | translate }}
             </a>
           </div>

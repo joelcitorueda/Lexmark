@@ -121,7 +121,8 @@
     line-height: 1.4;
     text-align: right;
 
-    a {
+    a,
+    .footer__legal-text {
       color: #142335;
       font-weight: 700;
       text-decoration: underline;
